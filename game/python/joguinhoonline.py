@@ -1,11 +1,17 @@
 import pygame
+import sys
 from pathlib import Path
 
 
 TAMANHO_JANELA = (1280, 720)
 FPS = 60
 
-PASTA_FONTES = Path(__file__).resolve().parent / "fonts"
+if getattr(sys, "frozen", False):
+    PASTA_BASE = Path(sys._MEIPASS)
+else:
+    PASTA_BASE = Path(__file__).resolve().parent
+
+PASTA_FONTES = PASTA_BASE / "fonts"
 FONTE_REGULAR = PASTA_FONTES / "PixelifySans-Regular.ttf"
 FONTE_BOLD = PASTA_FONTES / "PixelifySans-Bold.ttf"
 
